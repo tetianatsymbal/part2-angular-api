@@ -1,0 +1,79 @@
+<form [formGroup]="userForm" (ngSubmit)="onAddUser()" class="userForm">
+  <mat-form-field appearance="fill" class="formGroup">
+    <mat-label>First Name</mat-label>
+    <input matInput type="text" formControlName="firstname" id="firstname" />
+    <mat-error
+      *ngIf="
+        controls.firstname.invalid &&
+        (controls.firstname.dirty || controls.firstname.touched)
+      "
+    >
+      <mat-error *ngIf="controls.firstname.errors?.['required']">
+        Please, enter your name.
+      </mat-error>
+      <mat-error *ngIf="controls.firstname.errors?.['minlength']">
+        Please, enter full name!
+      </mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label for="lastname">Last Name</mat-label>
+    <input matInput formControlName="lastname" id="lastname" type="text" />
+    <mat-error
+      class="formError"
+      *ngIf="
+        controls.lastname.invalid &&
+        (controls.lastname.dirty || controls.lastname.touched)
+      "
+    >
+      <div *ngIf="controls.lastname.errors?.['required']">
+        Please, enter your surname.
+      </div>
+      <div *ngIf="controls.lastname.errors?.['minlength']">
+        Please, enter full surname!
+      </div>
+      <div *ngIf="controls.lastname.errors?.['maxlength']">
+        It is too long surname!!
+      </div>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label for="email">Email</mat-label>
+    <input matInput formControlName="email" id="email" type="email" />
+    <mat-error
+      *ngIf="
+        controls.email.invalid &&
+        (controls.email.dirty || controls.email.touched)
+      "
+    >
+      <div *ngIf="controls.email.errors?.['required']">
+        Please, enter your email.
+      </div>
+      <div *ngIf="controls.email.errors?.['email']">Check email!</div>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label for="phone">Phone</mat-label>
+    <input matInput formControlName="phone" id="phone" type="tel" />
+    <mat-error
+      *ngIf="
+        controls.phone.invalid &&
+        (controls.phone.dirty || controls.phone.touched)
+      "
+    >
+      <div *ngIf="controls.phone.errors?.['required']">
+        Please, enter your phone number.
+      </div>
+      <div *ngIf="controls.phone.errors?.['pattern']">Check phone!</div>
+    </mat-error>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="accent"
+    [disabled]="!userForm.valid"
+    class="submit-btn"
+    type="submit"
+  >
+    Submit
+  </button>
+</form>

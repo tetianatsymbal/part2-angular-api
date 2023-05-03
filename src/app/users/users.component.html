@@ -1,0 +1,74 @@
+<mat-toolbar class="toolbar">
+  <button
+    mat-button
+    color="primary"
+    [disabled]="!users.length"
+    (click)="selectAll()"
+  >
+    Select all
+  </button>
+  <button
+    mat-button
+    color="primary"
+    [disabled]="!selectedUsers.length"
+    (click)="delete()"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+  <mat-form-field class="toolbar-form-field" appearance="fill">
+    <mat-label>Sorting order</mat-label>
+    <mat-select (selectionChange)="onSortBy($event)" value="Sorting by...">
+      <mat-option value="firstname"> First name </mat-option>
+      <mat-option value="lastname"> Last name </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <span class="spacer"></span>
+  <mat-form-field class="toolbar-form-field" appearance="fill">
+    <input
+      name="username"
+      #username
+      type="text"
+      matInput
+      placeholder="Search"
+    />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="accent"
+    class="btn-search"
+    (click)="find(username.value)"
+  >
+    Search
+    <mat-icon>search</mat-icon>
+  </button>
+  <button
+    *ngIf="!isOn"
+    mat-raised-button
+    color="accent"
+    class="btn-search"
+    (click)="openForm()"
+  >
+    Add User
+  </button>
+</mat-toolbar>
+
+<div class="add-user-block">
+  <app-user-form *ngIf="isOn" class="add-user-form"></app-user-form>
+</div>
+
+<div class="users">
+  <mat-card class="user-card" *ngFor="let user of users">
+    <mat-checkbox
+      class="user-checkbox"
+      (change)="selectOne($event.checked, user)"
+      [checked]="selectedUsers.includes(user)"
+    />
+    <div class="user-description">
+      <div class="user-name">
+        <span>{{ user.name }}</span>
+      </div>
+      <div class="user-email">Email: {{ user.email }}</div>
+      <div class="user-phone">Phone: {{ user.phone }}</div>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,56 @@
+.toolbar{
+ padding: 45px;
+}
+.spacer{
+ flex: 1 1 auto;
+}
+.toolbar-form-field{
+ margin-top: 19px;
+ line-height: 24px;
+}
+.btn-search{
+ background-color: blueviolet;
+ margin-left: 20px;
+ height: 50px;
+}
+.users{
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-around;
+ margin: 30px 20px;
+}
+.user-card{
+ margin: 15px 5px;
+ width: 300px;
+ position: relative;
+ border-radius: 8px;
+ border: 2px solid rgb(155, 150, 255);
+}
+.user-description{
+ display: flex;
+ padding: 15px;
+ flex-direction: column;
+ align-items: center;
+ margin: 15px;
+ gap: 10px;
+}
+.user-checkbox{
+ position: absolute;
+ right: 0;
+}
+.user-name{
+ display: flex;
+ gap: 10px;
+}
+.add-user-form{
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background-color: rgba(0, 0, 0, 0.5);
+ z-index: 9999;
+}
