@@ -1,4 +1,4 @@
-#Link to project: 
+# Link to project: 
 https://tetianatsymbal.github.io/part2-angular-api/
 
 # Part2AngularApi
